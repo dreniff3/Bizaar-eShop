@@ -1,12 +1,16 @@
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { PiShoppingBagFill } from 'react-icons/pi';
 
 const Header = () => {
   return (
     <header>
         <Navbar bg="dark" data-bs-theme="dark" expand="md" collapseOnSelect>
             <Container>
-                <Navbar.Brand href="/">My eShop</Navbar.Brand>
+                <Navbar.Brand href="/" style={{display: "flex", alignItems: "center"}}>
+                    <PiShoppingBagFill style={{fontSize: "2rem", paddingRight: "5px"}} />
+                    My eShop
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
