@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Playstation 5 Console',
     image: '/images/playstation.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Shin Godzilla Blu-ray',
     image: '/images/shingodzillabluray.jpg',
     description:
