@@ -1,8 +1,23 @@
+import { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Product from '../components/Product';
-import products from '../products';
+import axios from 'axios';
 
 const HomePage = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            // proxy in package.json fills in route prefix
+            const { data } = await axios.get("/api/products");
+            console.log(data);
+            setProducts(data);
+        };
+
+        fetchProducts();
+    }, []); // run only once, when component mounts
+
+    console.log(products);
 
     return (
         <>
