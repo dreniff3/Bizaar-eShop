@@ -5,6 +5,7 @@ import {
 } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
+import { addToCart } from "../slices/cartSlice";
 
 const CartPage = () => {
     const navigate = useNavigate();
@@ -14,6 +15,10 @@ const CartPage = () => {
     const cart = useSelector((state) => state.cart);
     // destructure state to get cart properties
     const { cartItems } = cart;
+
+    const addToCartHandler = async (product, qty) => {
+        dispatch(addToCart({...product, qty}));
+    };
 
     return (
         <Row>
@@ -54,12 +59,12 @@ const CartPage = () => {
                                         ${ item.price }
                                     </Col>
 
-                                    {/* qty */}
+                                    {/* qty control */}
                                     <Col md={2}>
                                         <Form.Control
                                             as='select'
                                             value={item.qty}
-                                            onChange={(e) => {}}
+                                            onChange={(e) => addToCartHandler(item, Number(e.target.value))}
                                         >
                                             {/* create an array of indices up to the max qty in stock -1 */}
                                             {/* example: 5 in stock => [0, 1, 2, 3, 4] */}
