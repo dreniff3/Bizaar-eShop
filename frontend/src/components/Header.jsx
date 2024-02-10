@@ -35,7 +35,7 @@ const Header = () => {
                                                 bg='danger' 
                                                 style={{marginLeft: '5px'}}
                                             >
-                                                {cartItems.reduce((acc, curr) => acc + curr.qty, 0)}
+                                                {cartItems.reduce((acc, item) => acc + item.qty, 0)}
                                             </Badge>
                                         )
                                     }
