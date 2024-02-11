@@ -13,6 +13,7 @@ const authSlice = createSlice({
         setCredentials: (state, action) => {
             // payload === the user
             state.userInfo = action.payload;
+            // store user info to local storage, NOT token
             localStorage.setItem('userInfo', 
                 JSON.stringify(action.payload)
             );
