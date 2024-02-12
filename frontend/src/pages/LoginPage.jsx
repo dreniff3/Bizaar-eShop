@@ -103,6 +103,6 @@ const LoginPage = () => {
 
     </FormContainer>
   )
-}
+};
 
-export default LoginPage
+export default LoginPage;
