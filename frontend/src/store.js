@@ -3,6 +3,10 @@ import { apiSlice } from "./slices/apiSlice.js";
 import cartSliceReducer from "./slices/cartSlice.js";
 import authSliceReducer from "./slices/authSlice.js";
 
+/**   
+ * Redux "store" is a container that holds the 
+ * application's global state.
+ */
 const store = configureStore({
     reducer: {
         [apiSlice.reducerPath]: apiSlice.reducer,
