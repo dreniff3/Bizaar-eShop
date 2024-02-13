@@ -6,6 +6,17 @@ import authSliceReducer from "./slices/authSlice.js";
 /**   
  * Redux "store" is a container that holds the 
  * application's global state.
+ * 
+ * Reducer functions generate initial state / 
+ * calculate future updates. They are run using the
+ * react-redux method useDispatch() -- see: 
+ * CartPage, LoginPage, ProductPage, RegisterPage.
+ * 
+ * Data-flow: 1. actions are DISPATCHED in response 
+ *               to user interaction
+ *            2. the store runs REDUCER function to
+ *               calculate a new state
+ *            3. UI reads new state to display
  */
 const store = configureStore({
     reducer: {
