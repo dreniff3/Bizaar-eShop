@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Form, Button, Col } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
+import { savePaymentMethod } from "../slices/cartSlice";
 
 const PaymentPage = () => {
     const [paymentMethod, setPaymentMethod] = useState('PayPal');
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const cart = useSelector((state) => state.cart);
+    // destructure address from cart object 
+    const { shippingAddress } = cart;
+
+    useEffect(() => {
+        // navigate to Shipping page if no address is found
+        if (!shippingAddress) {
+            navigate('/shipping');
+        }
+    }, [shippingAddress, navigate]); // used in func, so added
+                                     // as dependencies
 
     return (
         <FormContainer>
