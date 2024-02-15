@@ -24,11 +24,17 @@ const PaymentPage = () => {
     }, [shippingAddress, navigate]); // used in func, so added
                                      // as dependencies
 
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(savePaymentMethod(paymentMethod));
+        navigate('/placeorder');
+    };
+
     return (
         <FormContainer>
             <CheckoutSteps step1 step2 step3 />
             <h1>Payment Method</h1>
-            <Form>
+            <Form onSubmit={ submitHandler }>
                 <Form.Group>
                     <Form.Label as='legend'>
                         Select Method
