@@ -46,6 +46,8 @@ const PaymentPage = () => {
                             label='PayPal or Credit Card'
                             id='PayPal'
                             name='paymentMethod'
+                            value='PayPal'
+                            checked
                             onChange={(e) => setPaymentMethod(e.target.value)}
                         ></Form.Check>
                     </Col>
