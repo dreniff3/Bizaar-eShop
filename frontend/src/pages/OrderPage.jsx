@@ -2,12 +2,12 @@ import { Link, useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { useGetOrderDetailQuery } from '../slices/ordersApiSlice';
+import { useGetOrderDetailsQuery } from '../slices/ordersApiSlice';
 
 const OrderPage = () => {
     const { id: orderId } = useParams();
 
-    const { data: order, refetch, isLoading, error } = useGetOrderDetailQuery(orderId);
+    const { data: order, refetch, isLoading, error } = useGetOrderDetailsQuery(orderId);
 
     return isLoading ? (
             <Loader />
