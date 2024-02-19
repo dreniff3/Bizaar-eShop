@@ -1,13 +1,56 @@
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap';
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { useGetOrderDetailsQuery } from '../slices/ordersApiSlice';
+import { 
+    useGetOrderDetailsQuery,
+    usePayOrderMutation,
+    useGetPayPalClientIdQuery,
+} from '../slices/ordersApiSlice';
 
 const OrderPage = () => {
     const { id: orderId } = useParams();
 
     const { data: order, refetch, isLoading, error } = useGetOrderDetailsQuery(orderId);
+
+    // pay order function
+    const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
+
+    const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+
+    const { data: paypal, isLoading: loadingPayPal, error: errorPayPal } = useGetPayPalClientIdQuery();
+
+    // user data from state
+    const { userInfo } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        // if PayPal has correctly returned client ID
+        if (!errorPayPal && !loadingPayPal && paypal.clientId) {
+            const loadPayPalScript = async () => {
+                // dispatch payment following PayPal API docs
+                paypalDispatch({
+                    type: 'resetOptions',
+                    value: {
+                        'client-id': paypal.clientId,
+                        currency: 'USD',
+                    }
+                });
+                paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
+            }
+            // if order hasn't been paid
+            if (order && !order.isPaid) {
+                // and paypal window hasn't loaded
+                if (!window.paypal) {
+                    // make payment
+                    loadPayPalScript();
+                }
+            }
+        }
+    }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal]);
 
     return isLoading ? (
             <Loader />
