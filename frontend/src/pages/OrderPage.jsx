@@ -204,10 +204,10 @@ const OrderPage = () => {
                                         {loadingPay && <Loader />}
                                         {isPending ? <Loader /> : (
                                             <div>
-                                                <Button 
+                                                {/* <Button 
                                                     onClick={onApproveTest}
                                                     style={{marginBottom: '10px'}}
-                                                >Test Pay Order</Button>
+                                                >Test Pay Order</Button> */}
                                                 <div>
                                                     <PayPalButtons
                                                         createOrder={createOrder}
