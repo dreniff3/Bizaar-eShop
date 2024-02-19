@@ -52,9 +52,23 @@ const OrderPage = () => {
         }
     }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal]);
 
-    function onApprove() {};
+    // captures the funds from the transaction and shows a message
+    function onApprove(data, actions) {
+        return actions.order.capture().then(async function (details) {
+            try {
+                await payOrder({orderId, details});
+                refetch();
+                toast.success('Payment successful');
+            } catch (error) {
+                toast.error(error?.data?.message || error.message)
+            }
+        });
+    };
+
     function onApproveTest() {};
+
     function onError() {};
+
     function createOrder() {};
 
     return isLoading ? (
