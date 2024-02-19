@@ -25,17 +25,32 @@ const ProfilePage = () => {
         { isLoading: loadingUpdateProfile }
     ] = useProfileMutation();
 
-    // get profil name and email from user info 
+    // get profile name and email from user info 
     useEffect(() => {
         if (userInfo) {
             setName(userInfo.name);
             setEmail(userInfo.email);
         }
-    }, [userInfo.name, userInfo.email]);
+    }, [userInfo, userInfo.name, userInfo.email]);
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log('Submit');
+        if (password !== confirmPassword) {
+            toast.error('Passwords do not match');
+        } else {
+            try {
+                // capture updated data in variable
+                const res = await updateProfile(
+                    { _id: userInfo._id, name, email, password }
+                    ).unwrap();
+                    console.log(res);
+                // set credentials to variable
+                dispatch(setCredentials(res));
+                toast.success('Profile updated successfully!');
+            } catch (error) {
+                toast.error(error?.data?.message || error.error);
+            }
+        }
     };
 
     return (
