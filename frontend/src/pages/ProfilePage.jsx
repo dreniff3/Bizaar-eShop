@@ -17,7 +17,7 @@ const ProfilePage = () => {
     const dispatch = useDispatch();
     
     // get user info from global state
-    const userInfo = useSelector((state) => state.auth);
+    const { userInfo } = useSelector((state) => state.auth);
 
     // get profil name and email from user info 
     useEffect(() => {
@@ -34,7 +34,21 @@ const ProfilePage = () => {
 
     return (
         <Row>
-            <Col md={3}>Column</Col>
+            <Col md={3}>
+                <h2>User Profile</h2>
+
+                <Form onSubmit={submitHandler}>
+                    <Form.Group controlId='name' className='my-2'>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                            type='name'
+                            placeholder='Enter name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        ></Form.Control>
+                    </Form.Group>
+                </Form>
+            </Col>
             <Col md={9}>Column</Col>
         </Row>
     );
