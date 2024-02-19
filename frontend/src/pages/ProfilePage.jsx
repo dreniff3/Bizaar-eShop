@@ -33,7 +33,10 @@ const ProfilePage = () => {
     };
 
     return (
-        <div>ProfilePage</div>
+        <Row>
+            <Col md={3}>Column</Col>
+            <Col md={9}>Column</Col>
+        </Row>
     );
 };
 
