@@ -77,6 +77,12 @@ const ProfilePage = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         ></Form.Control>
                     </Form.Group>
+
+                    <Button
+                        type='submit'
+                        variant='primary'
+                        className='my-2'
+                    >Update</Button>
                 </Form>
             </Col>
             <Col md={9}>Column</Col>
