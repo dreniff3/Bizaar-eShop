@@ -63,10 +63,10 @@ const OrderPage = () => {
 
                             <ListGroup.Item>
                                 <h2>Order Items</h2>
-                                {order.orderItems.map((item, index) => {
+                                {order.orderItems.map((item, index) => (
                                     <ListGroup.Item key={index}>
                                         <Row>
-                                            <Col md={1}>
+                                            <Col xs={2} md={2}>
                                                 <Image 
                                                     src={item.image} 
                                                     alt={item.name} 
@@ -84,7 +84,7 @@ const OrderPage = () => {
                                             </Col>
                                         </Row>
                                     </ListGroup.Item>
-                                })}
+                                ))}
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>
