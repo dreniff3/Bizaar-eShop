@@ -72,9 +72,24 @@ const OrderPage = () => {
         toast.success('Payment successful');
     };
 
-    function onError() {};
+    function onError(error) {
+        toast.error(error.message);
+    };
 
-    function createOrder() {};
+    // sets up details of the transaction and launches the PayPal Checkout window
+    function createOrder(data, actions) {
+        return actions.order.create({
+            purchase_units: [
+                {
+                    amount: {
+                        value: order.totalPrice,
+                    },
+                },
+            ],
+        }).then((orderId) => {
+            return orderId;
+        });
+    };
 
     return isLoading ? (
             <Loader />
