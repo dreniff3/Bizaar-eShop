@@ -19,6 +19,12 @@ const ProfilePage = () => {
     // get user info from global state
     const { userInfo } = useSelector((state) => state.auth);
 
+    // get (and name) function (and 'isLoading') from users slice endpoint
+    const [
+        updateProfile, 
+        { isLoading: loadingUpdateProfile }
+    ] = useProfileMutation();
+
     // get profil name and email from user info 
     useEffect(() => {
         if (userInfo) {
@@ -83,6 +89,7 @@ const ProfilePage = () => {
                         variant='primary'
                         className='my-2'
                     >Update</Button>
+                    {loadingUpdateProfile && <Loader />}
                 </Form>
             </Col>
             <Col md={9}>Column</Col>
