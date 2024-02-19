@@ -52,6 +52,11 @@ const OrderPage = () => {
         }
     }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal]);
 
+    function onApprove() {};
+    function onApproveTest() {};
+    function onError() {};
+    function createOrder() {};
+
     return isLoading ? (
             <Loader />
             ) : error ? <Message variant='danger' /> : (
@@ -159,7 +164,28 @@ const OrderPage = () => {
                                         <Col>${order.totalPrice}</Col>
                                     </Row>
                                 </ListGroup.Item>
-                                {/* PAY ORDER PLACEHOLDER */}
+                                
+                                {!order.isPaid && (
+                                    <ListGroup.Item>
+                                        {loadingPay && <Loader />}
+                                        {isPending ? <Loader /> : (
+                                            <div>
+                                                <Button 
+                                                    onClick={onApproveTest}
+                                                    style={{marginBottom: '10px'}}
+                                                >Test Pay Order</Button>
+                                                <div>
+                                                    <PayPalButtons
+                                                        createOrder={createOrder}
+                                                        onApprove={onApprove}
+                                                        onError={onError}
+                                                    ></PayPalButtons>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </ListGroup.Item>
+                                )}
+
                                 {/* MARK AS DELIVERED PLACEHOLDER */}
                             </ListGroup>
                         </Card>
