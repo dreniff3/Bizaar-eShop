@@ -113,9 +113,9 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
         res.status(200).json({
             _id: updatedUser._id,
-            name: updateUser.name,
-            email: updateUser.email,
-            isAdmin: updateUser.isAdmin,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin,
         });
     } else {
         res.status(404);
