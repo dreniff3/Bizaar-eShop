@@ -28,7 +28,7 @@ import PaymentPage from './pages/PaymentPage.jsx';
 import PlaceOrderPage from './pages/PlaceOrderPage.jsx';
 import OrderPage from './pages/OrderPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
-import OrderListPage from './pages/OrderListPage.jsx';
+import OrderListPage from './pages/admin/OrderListPage.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
