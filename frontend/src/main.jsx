@@ -12,17 +12,23 @@ import store from './store.js';
 import App from './App.jsx'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// import routes
+import PrivateRoute from './components/PrivateRoute.jsx';
+import AdminRoute from './components/AdminRoute.jsx';
+
+// import pages
 import HomePage from './pages/HomePage.jsx';
 import ProductPage from './pages/ProductPage.jsx';
 import CartPage from './pages/CartPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import ShippingPage from './pages/ShippingPage.jsx';
-import PrivateRoute from './components/PrivateRoute.jsx';
 import PaymentPage from './pages/PaymentPage.jsx';
 import PlaceOrderPage from './pages/PlaceOrderPage.jsx';
 import OrderPage from './pages/OrderPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
+import OrderListPage from './pages/OrderListPage.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +45,10 @@ const router = createBrowserRouter(
         <Route path="/placeorder" element={<PlaceOrderPage />} />
         <Route path="/order/:id" element={<OrderPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+      </Route>
+
+      <Route path="" element={<AdminRoute />} >
+        <Route path="/admin/orderlist" element={<OrderListPage />} />
       </Route>
     </Route>
   )
