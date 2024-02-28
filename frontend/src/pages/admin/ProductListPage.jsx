@@ -6,9 +6,13 @@ import Loader from '../../components/Loader';
 import { useGetProductsQuery } from '../../slices/productApiSlice';
 
 const ProductListPage = () => {
-  return (
-    <div>ProductListPage</div>
-  );
+    const { data: products, isLoading, error } = useGetProductsQuery();
+
+    console.log(products);
+
+    return (
+        <div>ProductListPage</div>
+    );
 };
 
 export default ProductListPage;
