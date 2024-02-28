@@ -8,10 +8,26 @@ import { useGetProductsQuery } from '../../slices/productApiSlice';
 const ProductListPage = () => {
     const { data: products, isLoading, error } = useGetProductsQuery();
 
-    console.log(products);
-
     return (
-        <div>ProductListPage</div>
+        <>
+            <Row className='align-items-center'>
+                <Col>
+                    <h1>Products</h1>
+                </Col>
+                <Col className='text-end'>
+                    <Button 
+                        className='btn-sm m-3' 
+                        style={{ 
+                            display: 'inline-flex', 
+                            alignItems: 'center', 
+                            gap: '5px' 
+                        }}
+                    >
+                        <FaEdit /> Create Product
+                    </Button>
+                </Col>
+            </Row>
+        </>
     );
 };
 
