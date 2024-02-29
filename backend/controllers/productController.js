@@ -38,6 +38,10 @@ const createProduct = asyncHandler(async (req, res) => {
         numReviews: 0,
         description: 'Sample description',
     });
+
+    // capture saved document in variable
+    const createdProduct = await product.save();
+    res.status(201).json(createProduct);
 });
 
-export { getProducts, getProductById };
+export { getProducts, getProductById, createProduct };
