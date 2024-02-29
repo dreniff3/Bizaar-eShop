@@ -9,7 +9,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 url: PRODUCTS_URL,
             }),
             // so refreshing page isn't necessary
-            providesTags: ['Products'],
+            providesTags: ['Product'],
             // in seconds
             keepUnusedDataFor: 5,
         }),
@@ -33,7 +33,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 method: 'PUT',
                 body: data,
             }),
-            invalidatesTags: ['Products'],
+            invalidatesTags: ['Product'],
         }),
     }),
 });
