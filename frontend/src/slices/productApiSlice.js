@@ -8,6 +8,8 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: PRODUCTS_URL,
             }),
+            // so refreshing page isn't necessary
+            providesTags: ['Products'],
             // in seconds
             keepUnusedDataFor: 5,
         }),
@@ -31,7 +33,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 method: 'PUT',
                 body: data,
             }),
-            invalidatesTags: ['Product'],
+            invalidatesTags: ['Products'],
         }),
     }),
 });
