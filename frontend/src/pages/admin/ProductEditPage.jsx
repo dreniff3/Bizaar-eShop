@@ -37,6 +37,29 @@ const ProductEditPage = () => {
         }
     }, [product]);
 
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        // data to be passed to updateProduct() method
+        const updatedProduct = {
+            _id: productId,
+            name,
+            price,
+            image,
+            brand,
+            category,
+            countInStock,
+            description,
+        };
+
+        const result = await updateProduct(updatedProduct);
+        if (result.error) {
+            toast.error(result.error);
+        } else {
+            toast.success('Product updated');
+            navigate('/admin/productlist');
+        }
+    };
+
     return (
         <>
             <Link 
@@ -49,7 +72,7 @@ const ProductEditPage = () => {
                 <h1>Edit Product</h1>
                 {isUpdating && <Loader />}
                 {isLoading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-                    <Form>
+                    <Form onSubmit={submitHandler}>
                         <Form.Group controlId="name" className="my-2">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
