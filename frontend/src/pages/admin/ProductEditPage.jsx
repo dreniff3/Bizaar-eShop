@@ -21,7 +21,7 @@ const ProductEditPage = () => {
     // get current product from "id" in params
     const { data: product, isLoading, error, refetch } = useGetProductDetailsQuery(productId);
 
-    console.log(product);
+    const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
 
     return (
         <div>ProductEditPage</div>
