@@ -23,4 +23,11 @@ const getProductById = asyncHandler(async (req, res) => {
     };
 });
 
+// @desc    Create product
+// @route   POST /api/products
+// @accesss Private/Admin
+const createProduct = asyncHandler(async (req, res) => {
+    
+});
+
 export { getProducts, getProductById };
