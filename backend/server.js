@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -35,6 +36,11 @@ app.use('/api/upload', uploadRoutes);
 app.get('/api/config/paypal', (req, res) => 
     res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
 );
+
+// set __dirname to current directory
+const __dirname = path.resolve();
+// set '/uploads' folder as static
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.use(notFound);
 app.use(errorHandler);
