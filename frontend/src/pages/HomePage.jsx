@@ -1,11 +1,13 @@
 import { Row, Col } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import Product from '../components/Product';
 import Loader from '../components/Loader.jsx';
 import Message from '../components/Message.jsx';
 import { useGetProductsQuery } from '../slices/productApiSlice.js';
 
 const HomePage = () => {
-    const { data, isLoading, error } = useGetProductsQuery();
+    const { pageNumber } = useParams();
+    const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
 
     return (
         <>
