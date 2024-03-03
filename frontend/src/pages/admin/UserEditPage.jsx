@@ -34,7 +34,14 @@ const UserEditPage = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log('submitted');
+        try {
+            await updateUser({ userId, name, email, isAdmin });
+            toast.success('User updated successfully');
+            refetch();
+            navigate('/admin/userlist');
+        } catch (error) {
+            toast.error(error?.data?.message || error.error);
+        }
     };
 
     return (
