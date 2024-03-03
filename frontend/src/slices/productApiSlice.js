@@ -5,8 +5,11 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     // builder object has its own methods, like .query()
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: () => ({
+            query: ({ pageNumber }) => ({
                 url: PRODUCTS_URL,
+                params: {
+                    pageNumber,
+                },
             }),
             // so refreshing page isn't necessary
             providesTags: ['Product'],
