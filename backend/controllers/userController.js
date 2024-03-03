@@ -135,7 +135,15 @@ const getUsers = asyncHandler(async (req, res) => {
 // @route   GET /api/users/:id
 // @accesss Private/Admin
 const getUserById = asyncHandler(async (req, res) => {
-    res.send('get user by id');
+    // select user WITHOUT password
+    const user = await User.findById(req.params.id).select('-password');
+
+    if (user) {
+        res.status(200).json(user);
+    } else {
+        res.status(404);
+        throw new Error('User not found');
+    }
 });
 
 // @desc    Delete user
