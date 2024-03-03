@@ -39,6 +39,25 @@ const ProductPage = () => {
         navigate('/cart');
     };
 
+    const submitHandler = async (e) => {
+        e.preventDefault();
+
+        try {
+            await createReview({
+                productId,
+                rating,
+                comment,
+            }).unwrap(); // unwrap Promise object
+            refetch();
+            toast.success('Review Submitted');
+            // set rating and comment back to default
+            setRating(0);
+            setComment('');
+        } catch (error) {
+            toast.error(error?.data?.message || error.error);
+        }
+    };
+
     return (
         <>
             <Link className="btn btn-light my-3" to="/">Go Back</Link>
@@ -149,7 +168,7 @@ const ProductPage = () => {
                             {loadingProductReview && <Loader />}
 
                             {userInfo ? (
-                                <Form>
+                                <Form onSubmit={submitHandler}>
                                     <Form.Group controlId='rating' className='my-2'>
                                         <Form.Label>Rating</Form.Label>
                                         <Form.Control
