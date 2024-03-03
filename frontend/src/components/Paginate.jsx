@@ -5,7 +5,7 @@ const Paginate = ({ pages, page, isAdmin = false }) => {
     return (
         pages > 1 && (
             <Pagination>
-                { [...Array(page).keys()].map((x) => (
+                { [...Array(pages).keys()].map((x) => (
                     <LinkContainer 
                         key={x + 1}
                         to={
