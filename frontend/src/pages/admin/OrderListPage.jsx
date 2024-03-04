@@ -1,12 +1,15 @@
+import { useParams } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button } from 'react-bootstrap';
 import { FaTimes } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
+import Paginate from '../../components/Paginate';
 import { useGetOrdersQuery } from '../../slices/ordersApiSlice';
 
 const OrderListPage = () => {
-  const { data: orders, isLoading, error } = useGetOrdersQuery();
+  const { pageNumber } = useParams();
+  const { data, isLoading, error } = useGetOrdersQuery({pageNumber});
 
   return (
     <>
@@ -16,6 +19,7 @@ const OrderListPage = () => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
+        <>
         <Table striped hover responsive className='table-sm'>
           <thead>
             <tr>
@@ -29,12 +33,12 @@ const OrderListPage = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {data.orders.map((order) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0,10)}</td>
-                <td>${order.totalPrice}</td>
+                <td>${order.totalPrice.toFixed(2)}</td>
                 <td>
                 {order.isPaid ? (
                   order.paidAt.substring(0,10)
@@ -60,6 +64,13 @@ const OrderListPage = () => {
             ))}
           </tbody>
         </Table>
+        <Paginate 
+          list={data.list}
+          pages={data.pages}
+          page={data.page}
+          isAdmin={true}
+        />
+        </>
       )}
     </>
   );
