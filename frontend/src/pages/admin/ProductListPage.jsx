@@ -113,6 +113,7 @@ const ProductListPage = () => {
                         </tbody>
                     </Table>
                     <Paginate
+                        list = {data.list}
                         pages={data.pages}
                         page={data.page}
                         isAdmin={true}
