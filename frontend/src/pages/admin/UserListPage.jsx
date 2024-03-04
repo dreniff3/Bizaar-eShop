@@ -1,13 +1,16 @@
+import { useParams } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button } from 'react-bootstrap';
 import { FaTimes, FaEdit, FaTrash, FaCheck } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
+import Paginate from '../../components/Paginate';
 import { toast } from 'react-toastify';
 import { useGetUsersQuery, useDeleteUserMutation } from '../../slices/usersApiSlice';
 
 const UserListPage = () => {
-  const { data: users, refetch, isLoading, error } = useGetUsersQuery();
+  const { pageNumber } = useParams();
+  const { data, refetch, isLoading, error } = useGetUsersQuery({pageNumber});
   
   const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
 
@@ -32,6 +35,7 @@ const UserListPage = () => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
+        <>
         <Table striped hover responsive className='table-sm'>
           <thead>
             <tr>
@@ -43,7 +47,7 @@ const UserListPage = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {data.users.map((user) => (
               <tr key={user._id}>
                 <td>{user._id}</td>
                 <td>{user.name}</td>
@@ -73,6 +77,13 @@ const UserListPage = () => {
             ))}
           </tbody>
         </Table>
+        <Paginate 
+          list={data.list}
+          pages={data.pages}
+          page={data.page}
+          isAdmin={true}
+        />
+        </>
       )}
     </>
   );
