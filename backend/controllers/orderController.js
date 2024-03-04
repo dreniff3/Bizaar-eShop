@@ -117,10 +117,19 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 // @route   GET /api/orders
 // @accesss Private/Admin
 const getOrders = asyncHandler(async (req, res) => {
+    const pageSize = 2;
+    const page = Number(req.query.pageNumber) || 1;
+    const count = await Order.countDocuments();
     // get all orders (using empty object)
     // and populate from User collection using id and name
-    const orders = await Order.find({}).populate('user', 'id name');
-    res.status(200).json(orders);
+    const orders = await Order.find({}).populate('user', 'id name')
+        .limit(pageSize).skip(pageSize * (page - 1));
+    res.status(200).json({
+        orders,
+        list: 'orderlist',
+        page,
+        pages: Math.ceil(count / pageSize),
+    });
 });
 
 export {
