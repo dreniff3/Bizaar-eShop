@@ -127,8 +127,19 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @route   GET /api/users
 // @accesss Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
-    const users = await User.find({}); // empty object selects all users
-    res.status(200).json(users);
+    const pageSize = 2;
+    const page = Number(req.query.pageNumber) || 1;
+    const count = await User.countDocuments(); // get total number of Users
+    // empty object selects all users
+    const users = await User.find({})
+        .limit(pageSize)
+        .skip(pageSize * (page - 1));
+    res.status(200).json({
+        users, 
+        list: 'userlist', 
+        page, 
+        pages: Math.ceil(count / pageSize)
+    });
 });
 
 // @desc    Get user by id
