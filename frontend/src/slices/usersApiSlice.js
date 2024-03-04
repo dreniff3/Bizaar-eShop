@@ -34,9 +34,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             }),
         }),
         getUsers: builder.query({
-            query: () => ({
+            query: ({ pageNumber }) => ({
                 url: USERS_URL,
                 method: 'GET',
+                params: {
+                    pageNumber,
+                },
             }),
             // doesn't require refresh to see users after deletion
             providesTags: ['Users'],
