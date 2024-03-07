@@ -47,3 +47,8 @@ html {
     font-weight: bold;
     padding-left: 0.5rem;
 }
+
+/*   ----- SearchBox  -----  */
+#search-box::placeholder {
+  color: #A7A7A7;
+}
