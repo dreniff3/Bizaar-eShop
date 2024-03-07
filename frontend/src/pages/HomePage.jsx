@@ -32,6 +32,7 @@ const HomePage = () => {
                 <Paginate
                     pages={data.pages}
                     page={data.page}
+                    keyword={keyword ? keyword : ''}
                 />
             </>) }
         </>
