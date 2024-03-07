@@ -6,6 +6,7 @@ import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { PiShoppingBagFill } from 'react-icons/pi';
+import SearchBox from './SearchBox';
 
 const Header = () => {
     // access cartSliceReducer by calling store 'cart' reducer
@@ -45,6 +46,9 @@ const Header = () => {
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
+
+                            <SearchBox />
+
                             <LinkContainer to="/cart">
                                 <Nav.Link>
                                     <FaShoppingCart /> Cart
