@@ -6,6 +6,7 @@ import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { PiShoppingBagFill } from 'react-icons/pi';
+import { SHOP_NAME } from "../constants.js";
 import SearchBox from './SearchBox';
 
 const Header = () => {
@@ -37,8 +38,12 @@ const Header = () => {
 
                     <LinkContainer to='/'>
                         <Navbar.Brand style={{display: "flex", alignItems: "center"}}>
-                            <PiShoppingBagFill style={{fontSize: "2rem", paddingRight: "5px"}} />
-                            My eShop
+                            <PiShoppingBagFill style={{
+                                fontSize: "2rem", 
+                                paddingRight: "5px", 
+                                paddingBottom: "5px"
+                            }} />
+                            {SHOP_NAME}
                         </Navbar.Brand>
                     </LinkContainer>
 
