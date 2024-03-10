@@ -56,3 +56,9 @@ html {
 #search-box::placeholder {
   color: #A7A7A7;
 }
+
+@media screen and (max-width: 768px) {
+  .d-flex {
+    margin-top: 7px;
+  }
+}
