@@ -1,6 +1,9 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
 
+// for microservice
+import axios from 'axios';
+
 // @desc    Create new order
 // @route   POST /api/orders
 // @accesss Private
@@ -85,6 +88,17 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
         };
 
         const updatedOrder = await order.save();
+
+        // send email to user
+        try {
+            const response = await axios.post('http://localhost:3000/api/sendEmail', {
+                userEmail: req.user.email,
+                purchaseDetails: 'Your order has been successfully completed.'
+            });
+            console.log('Email sent: ', response.data);
+        } catch (error) {
+            console.error('Error sending email: ', error.response.data);
+        }
 
         res.status(200).json(updatedOrder);
     } else {
