@@ -23,10 +23,6 @@ app.use(express.urlencoded({ extended: true }));
 // cookie parser middleware - allows us to access request.cookies
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-    res.send('API is running...');
-});
-
 // routes mapped to files
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
@@ -41,6 +37,23 @@ app.get('/api/config/paypal', (req, res) =>
 const __dirname = path.resolve();
 // set '/uploads' folder as static
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+// test to see if we're in production
+if (process.env.NODE_ENV === 'production') {
+    // set static build folder
+    app.use(express.static(path.join(__dirname, '/frontend/dist')));
+
+    /* any route that is not api will be redirected to index.html 
+       in '/frontend/build' static folder */
+    app.get('*', (req, res) => 
+        res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
+    );
+} else {
+    // if not in production, use react dev server
+    app.get('/', (req, res) => {
+        res.send('API is running...');
+    });
+}
 
 app.use(notFound);
 app.use(errorHandler);
