@@ -34,7 +34,6 @@ const SearchBox = () => {
             ></Form.Control>
             <Button
                 type='submit'
-                variant='secondary'
                 className='p-2 mx-2'
             >Search</Button>
         </Form>
