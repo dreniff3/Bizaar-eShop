@@ -25,7 +25,24 @@ html {
   position: relative;
 }
 
+/*   ----- Header  -----  */
+#navbar, div.dropdown-menu.show {
+  background-color: #B59C81; /* for drop down menu color */
+}
+
+div.dropdown-menu.show > *:hover {
+  background-color: #94816d;
+}
+
 /*   ----- Product  -----  */
+.product-link {
+  color: #B59C81;
+}
+
+.product-link:hover {
+  color: #94816d;
+}
+
 .product-title {
     height: 1.5em; /* Set a fixed heigh */
     overflow: hidden; /* Hide overflow content */
@@ -62,3 +79,17 @@ html {
     margin-top: 7px;
   }
 }
+
+.d-flex > button {
+  background-color: #94816d;
+  border: none;
+}
+
+.d-flex > button:hover {
+  background-color: #756759;
+}
+
+/* #username {
+  background-color: #9FA6B2; // 'bootstrap secondary'
+  color: #9FA6B2;
+} */
