@@ -33,7 +33,7 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar bg="dark" data-bs-theme="dark" expand="md" collapseOnSelect>
+            <Navbar id="navbar" data-bs-theme="dark" expand="md" collapseOnSelect>
                 <Container>
 
                     <LinkContainer to='/'>
