@@ -8,6 +8,7 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { PiShoppingBagFill } from 'react-icons/pi';
 import { SHOP_NAME } from "../constants.js";
 import SearchBox from './SearchBox';
+import { resetCart } from '../slices/cartSlice.js';
 
 const Header = () => {
     // access cartSliceReducer by calling store 'cart' reducer
@@ -25,6 +26,8 @@ const Header = () => {
             await logoutApiCall().unwrap();
             // clear local storage
             dispatch(logout());
+            // reset cart
+            dispatch(resetCart());
             navigate('/login');
         } catch (error) {
             console.log(error);
