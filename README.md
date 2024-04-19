@@ -14,6 +14,7 @@ An eCommerce shop built using the MERN stack along with Redux Toolkit, based lar
 - Post reviews
 - Add items to cart
 - Purchase orders
+
 **Admin**
 - Edit products
 - Manage user profiles
