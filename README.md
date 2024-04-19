@@ -8,13 +8,13 @@ An eCommerce shop built using the MERN stack along with Redux Toolkit, based lar
 ### Features
 - **Users**
   -
-  Create account
+Create account
   -
-  Search products
+Search products
   -
-  Post reviews
+Post reviews
   -
-  Purchase orders
+Purchase orders
 
 ## Technology Used
 - MongoDB
