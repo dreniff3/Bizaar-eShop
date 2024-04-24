@@ -10,7 +10,7 @@ import { PiShoppingBagFill } from 'react-icons/pi';
 import { SHOP_NAME } from "../constants.js";
 import SearchBox from './SearchBox';
 import { resetCart } from '../slices/cartSlice.js';
-import logo from '../public/images/logo.jpeg';
+import logo from '../../public/images/logo.jpeg';
 
 const Header = () => {
     // access cartSliceReducer by calling store 'cart' reducer
