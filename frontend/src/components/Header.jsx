@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Badge, NavDropdown } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
@@ -9,6 +10,7 @@ import { PiShoppingBagFill } from 'react-icons/pi';
 import { SHOP_NAME } from "../constants.js";
 import SearchBox from './SearchBox';
 import { resetCart } from '../slices/cartSlice.js';
+import logo from '../public/images/logo.jpeg';
 
 const Header = () => {
     // access cartSliceReducer by calling store 'cart' reducer
@@ -41,12 +43,7 @@ const Header = () => {
 
                     <LinkContainer to='/'>
                         <Navbar.Brand style={{display: "flex", alignItems: "center"}}>
-                            <PiShoppingBagFill style={{
-                                fontSize: "2rem", 
-                                paddingRight: "5px", 
-                                paddingBottom: "5px"
-                            }} />
-                            {SHOP_NAME}
+                            <Image src={logo} fluid />
                         </Navbar.Brand>
                     </LinkContainer>
 
