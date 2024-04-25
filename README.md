@@ -4,6 +4,8 @@
 
 https://bizaar-eshop.onrender.com/
 
+![Bizaar eShop Homepage](https://github.com/dreniff3/Bizaar-eShop/assets/85808475/9ad27288-f6a1-421a-a629-0534a8e85d0e)
+
 ## Description
 An eCommerce shop built using the MERN stack along with Redux Toolkit, based largely on [Brad Traversy's eCommerce App](https://github.com/bradtraversy/proshop-v2). This project was originally made for an *Intro to Software Engineering* course at Oregon State University, with the intention of creating a more robust project using the **Agile** project management methodology. The Bizaar eShop connects to my [Email Notification Microservice](https://github.com/dreniff3/osu-cs361-microservice) to send e-mail receipts to users who successfully pay for a completed order.  
 
