@@ -1,4 +1,6 @@
 ﻿# Bizaar eShop
+ 
+![logo](https://github.com/dreniff3/Bizaar-eShop/assets/85808475/9427443d-da6f-4bb0-9e11-d88c28878c21)
 
 https://bizaar-eshop.onrender.com/
 
