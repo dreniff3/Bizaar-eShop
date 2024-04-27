@@ -27,20 +27,21 @@ html {
 
 /*   ----- Header  -----  */
 #navbar, div.dropdown-menu.show {
-  background-color: #B59C81; /* for drop down menu color */
+  background-color: black; /* for drop down menu color */
 }
 
-div.dropdown-menu.show > *:hover {
-  background-color: #94816d;
+#logo {
+  height: 85px;
+  width: 320px;
 }
 
 /*   ----- Product  -----  */
 .product-link {
-  color: #B59C81;
+  color: black;
 }
 
 .product-link:hover {
-  color: #94816d;
+  color: purple;
 }
 
 .product-title {
@@ -70,10 +71,6 @@ div.dropdown-menu.show > *:hover {
   color: black;
 }
 
-#search-box::placeholder {
-  color: #A7A7A7;
-}
-
 @media screen and (max-width: 768px) {
   .d-flex {
     margin-top: 7px;
@@ -81,15 +78,10 @@ div.dropdown-menu.show > *:hover {
 }
 
 .d-flex > button {
-  background-color: #94816d;
+  background-color: darkslategray;
   border: none;
 }
 
 .d-flex > button:hover {
-  background-color: #756759;
+  background-color: gray;
 }
-
-/* #username {
-  background-color: #9FA6B2; // 'bootstrap secondary'
-  color: #9FA6B2;
-} */
