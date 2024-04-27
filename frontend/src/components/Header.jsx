@@ -43,7 +43,7 @@ const Header = () => {
 
                     <LinkContainer to='/'>
                         <Navbar.Brand style={{display: "flex", alignItems: "center"}}>
-                            <Image src={logo} fluid />
+                            <Image src={logo} id="logo" fluid />
                         </Navbar.Brand>
                     </LinkContainer>
 
